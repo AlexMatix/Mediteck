@@ -3,14 +3,22 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import {PagesModule} from './pages/pages.module';
+import { LoginComponent } from './login/login.component';
+import {APP_ROUTING} from './app.routes';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    PagesModule,
+    APP_ROUTING
   ],
   providers: [],
   bootstrap: [AppComponent]
