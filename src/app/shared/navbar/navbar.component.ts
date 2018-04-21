@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Renderer2} from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  isOpen = true;
 
-  constructor() { }
+  constructor(private renderer: Renderer2) { }
 
   ngOnInit() {
   }
 
+  cerrarMenu() {
+    if (this.isOpen) {
+      this.isOpen = false;
+      this.renderer.addClass(document.body, 'ls-toggle-menu');
+    } else {
+      this.isOpen = true;
+      this.renderer.removeClass(document.body, 'ls-toggle-menu');
+    }
+  }
 }

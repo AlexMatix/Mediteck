@@ -7,6 +7,11 @@ import {RouterModule} from '@angular/router';
 import {PAGES_ROUTES} from './pages.routes';
 import {NavbarComponent} from '../shared/navbar/navbar.component';
 import {FooterComponent} from '../shared/footer/footer.component';
+import {LeftsidebarComponent} from '../shared/leftsidebar/leftsidebar.component';
+import {BreadcrumbsComponent} from '../shared/breadcrumbs/breadcrumbs.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CentroMedicoComponent } from './centro-medico/centro-medico.component';
+import { SuscripcionComponent } from './suscripcion/suscripcion.component';
 
 
 @NgModule({
@@ -14,7 +19,12 @@ import {FooterComponent} from '../shared/footer/footer.component';
     PagesComponent,
     PacientesComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    LeftsidebarComponent,
+    BreadcrumbsComponent,
+    DashboardComponent,
+    CentroMedicoComponent,
+    SuscripcionComponent
   ],
   exports: [],
   imports: [
