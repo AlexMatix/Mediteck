@@ -1,39 +1,65 @@
-<div id="FomrSuscripcion" class="card margintopForm">
-  <div class="form-group">
-    <label for="nombre">Nombre:</label>
-    <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu Nombre" name="nombre">
-  </div>
+<div id="FormHospital" class="card margintopForm">
+  <h3>Datos del Centro Médico</h3>
+  <form [formGroup] = "forma" (ngSubmit)="agregar()">
+    <div class="form-group">
+      <label for="nombre_cm">Nombre:</label>
+      <input type="text" class="form-control" id="nombre_cm" placeholder="Ingresa tu Nombre" name="nombre"
+             formControlName="nombre">
+    </div>
 
-  <div class="form-group">
-    <label for="apellido">Apellidos:</label>
-    <input type="text" class="form-control" id="apellido" placeholder="Apellido">
-  </div>
+    <div class="form-group mt-3">
+      <label for="direc">Direccion:</label>
+      <input type="text" class="form-control" id="direc" placeholder="Ingresa la Direccion" name="direc"
+             formControlName="direccion">
+    </div>
 
-  <div class="form-group">
-    <label for="fecha">Fecha de Inscripción:</label>
-    <input type="date" class="form-control" id="fecha">
-  </div>
+    <div class="form-group mt-3">
+      <label for="estado">Estado:</label>
+      <input type="text" class="form-control" id="estado" placeholder="Ingresa el estado"
+             formControlName="estado">
+    </div>
 
-  <div class="form-group">
-    <label for="cedula">Cedula Profesional:</label>
-    <input type="text" class="form-control" id="cedula" placeholder="Cedula Profesional">
-  </div>
+    <hr>
 
-  <div class="form-group">
-    <label for="pwd">Password:</label>
-    <input type="password" class="form-control" id="pwd" placeholder="Contraseña" name="pswd">
-  </div>
+    <h3>Datos de suscripción</h3>
+    <div formGroupName="suscripcion">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu Nombre" name="nombre"
+               formControlName="nombrePersona">
+      </div>
 
-  <div class="form-group">
-    <label for="conf-pwd">Password:</label>
-    <input type="password" class="form-control" id="conf-pwd" placeholder="Confirmar Contraseña" name="conf-pswd">
-  </div>
+      <div class="form-group">
+        <label for="apellido">Apellidos:</label>
+        <input type="text" class="form-control" id="apellido" placeholder="Apellido"
+               formControlName="apellidos">
+      </div>
 
-  <button type="submit" class="btn btn-primary text-center">Suscribir</button>
+      <div class="form-group">
+        <label for="fecha">Fecha de Inscripción:</label>
+        <input type="date" class="form-control" id="fecha"
+               formControlName="fecha_inscripcion">
+      </div>
 
-  <div class="form-check">
-    <label class="form-check-label">
-      <input class="form-check-input" type="checkbox" name="remember"> Recordarme
-    </label>
-  </div>
+      <div class="form-group">
+        <label for="cedula">Cedula Profesional:</label>
+        <input type="text" class="form-control" id="cedula" placeholder="Cedula Profesional"
+               formControlName="cedula_profesional">
+      </div>
+
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd" placeholder="Contraseña" name="pswd"
+               formControlName="password">
+      </div>
+
+      <div class="form-group">
+        <label for="conf-pwd">Password:</label>
+        <input type="password" class="form-control" id="conf-pwd" placeholder="Confirmar Contraseña" name="conf-pswd">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary text-center">Suscribir</button>
+
+  </form>
 </div>

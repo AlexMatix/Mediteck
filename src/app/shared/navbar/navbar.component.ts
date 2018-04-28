@@ -15,11 +15,11 @@ export class NavbarComponent implements OnInit {
 
   cerrarMenu() {
     if (this.isOpen) {
-      this.isOpen = false;
       this.renderer.addClass(document.body, 'ls-toggle-menu');
+      this.isOpen = false;
     } else {
-      this.isOpen = true;
       this.renderer.removeClass(document.body, 'ls-toggle-menu');
+      this.isOpen = true;
     }
   }
 }

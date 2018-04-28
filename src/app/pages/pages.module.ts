@@ -12,6 +12,7 @@ import {BreadcrumbsComponent} from '../shared/breadcrumbs/breadcrumbs.component'
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CentroMedicoComponent } from './centro-medico/centro-medico.component';
 import { SuscripcionComponent } from './suscripcion/suscripcion.component';
+import {ServiceModule} from '../services/service.module';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { SuscripcionComponent } from './suscripcion/suscripcion.component';
     BreadcrumbsComponent,
     DashboardComponent,
     CentroMedicoComponent,
-    SuscripcionComponent
+    SuscripcionComponent,
   ],
   exports: [],
   imports: [

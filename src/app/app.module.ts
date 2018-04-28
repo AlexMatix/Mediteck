@@ -10,6 +10,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { LeftsidebarComponent } from './shared/leftsidebar/leftsidebar.component';
 import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component';
+import {ServiceModule} from './services/service.module';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component
   imports: [
     BrowserModule,
     PagesModule,
+    ServiceModule,
     APP_ROUTING
   ],
   providers: [],
