@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import {SidebarService} from './shared/sidebar.service';
 import {CentroMedicoService} from './centro-medico/centro-medico.service';
 import {HttpClientModule} from '@angular/common/http';
+import {SuscripcionesService} from './suscripciones/suscripciones.service';
 
 @NgModule({
   imports: [
@@ -9,7 +10,8 @@ import {HttpClientModule} from '@angular/common/http';
   ],
   providers: [
     SidebarService,
-    CentroMedicoService
+    CentroMedicoService,
+    SuscripcionesService
   ],
   declarations: []
 })

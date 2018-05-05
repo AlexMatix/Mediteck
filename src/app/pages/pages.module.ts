@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CentroMedicoComponent } from './centro-medico/centro-medico.component';
 import { SuscripcionComponent } from './suscripcion/suscripcion.component';
 import {ServiceModule} from '../services/service.module';
+import { ClientesComponent } from './clientes/clientes.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {ServiceModule} from '../services/service.module';
     DashboardComponent,
     CentroMedicoComponent,
     SuscripcionComponent,
+    ClientesComponent,
   ],
   exports: [],
   imports: [

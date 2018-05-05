@@ -1,28 +1,32 @@
 <div id="FormHospital" class="card margintopForm">
-  <h3>Datos del Centro Médico</h3>
-  <form [formGroup] = "forma" (ngSubmit)="agregar()">
+  <form [formGroup]="formCentroMedico" (ngSubmit)="agregarCentroMedico()" *ngIf="!isCorrect">
+    <h3>Datos del Centro Médico</h3>
     <div class="form-group">
       <label for="nombre_cm">Nombre:</label>
       <input type="text" class="form-control" id="nombre_cm" placeholder="Ingresa tu Nombre" name="nombre"
-             formControlName="nombre">
+             formControlName="Nombre">
     </div>
 
     <div class="form-group mt-3">
       <label for="direc">Direccion:</label>
       <input type="text" class="form-control" id="direc" placeholder="Ingresa la Direccion" name="direc"
-             formControlName="direccion">
+             formControlName="Direccion">
     </div>
 
     <div class="form-group mt-3">
-      <label for="estado">Estado:</label>
+      <label for="estado">Tipo de suscripcion:</label>
       <input type="text" class="form-control" id="estado" placeholder="Ingresa el estado"
-             formControlName="estado">
+             formControlName="Tipo_centro_medico">
     </div>
 
-    <hr>
+    <button type="submit" class="btn btn-primary text-center">Suscribir</button>
+  </form>
 
+  <!--Formulario de suscripcion -->
+
+  <form [formGroup]="formSuscripcion" *ngIf="isCorrect" (ngSubmit)="agregarSuscripcion()">
     <h3>Datos de suscripción</h3>
-    <div formGroupName="suscripcion">
+    <div>
       <div class="form-group">
         <label for="nombre">Nombre:</label>
         <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu Nombre" name="nombre"
@@ -50,7 +54,7 @@
       <div class="form-group">
         <label for="pwd">Password:</label>
         <input type="password" class="form-control" id="pwd" placeholder="Contraseña" name="pswd"
-               formControlName="password">
+               formControlName="email">
       </div>
 
       <div class="form-group">

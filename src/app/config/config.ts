@@ -1,1 +1,1 @@
-export const URL_SERVICIOS = 'http://localhost:8080';
+export const URL_SERVICIOS = 'http://api.clinitec.technous.com.mx';

@@ -4,6 +4,7 @@ import {PagesComponent} from './pages.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {CentroMedicoComponent} from './centro-medico/centro-medico.component';
 import {SuscripcionComponent} from './suscripcion/suscripcion.component';
+import {ClientesComponent} from './clientes/clientes.component';
 
 const pagesRoutes: Routes = [
   {
@@ -14,6 +15,7 @@ const pagesRoutes: Routes = [
       {path: 'paciente', component: PacientesComponent},
       {path: 'centro-medico', component: CentroMedicoComponent},
       {path: 'suscripcion', component: SuscripcionComponent},
+      {path: 'clientes', component: ClientesComponent},
       {path: '', redirectTo: '/dashboard', pathMatch: 'full'}
     ]
   }

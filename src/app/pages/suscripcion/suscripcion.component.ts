@@ -9,31 +9,48 @@ import {CentroMedicoService} from '../../services/centro-medico/centro-medico.se
 })
 export class SuscripcionComponent implements OnInit {
 
-  forma: FormGroup;
+  formCentroMedico: FormGroup;
+  formSuscripcion: FormGroup;
+  isCorrect = false;
 
-  constructor(_centroMedicoService: CentroMedicoService) {
-    this.crearForma();
+  constructor(private _centroMedicoService: CentroMedicoService) {
+    this.crearFormaCentroMedico();
+    this.crearFormaSuscripcion()
   }
 
   ngOnInit() {
   }
 
-  crearForma() {
-    this.forma = new FormGroup({
-      'nombre': new FormControl('', []),
-      'direccion': new FormControl('', []),
-      'estado': new FormControl('', []),
-      'suscripcion': new FormGroup({
-        'nombrePersona': new FormControl('', []),
-        'apellidos': new FormControl('', []),
-        'fecha_inscripcion': new FormControl('', []),
-        'cedula_profesional': new FormControl('', []),
-        'password': new FormControl('', []),
-      })
+  crearFormaCentroMedico() {
+    this.formCentroMedico = new FormGroup({
+      'Nombre': new FormControl('', []),
+      'Direccion': new FormControl('', []),
+      'Tipo_centro_medico': new FormControl('', []),
     });
   }
 
-  agregar() {
-    console.log(this.forma.value);
+  crearFormaSuscripcion() {
+    this.formSuscripcion = new FormGroup({
+      'nombrePersona': new FormControl('', []),
+      'apellidos': new FormControl('', []),
+      'fecha_inscripcion': new FormControl('', []),
+      'cedula_profesional': new FormControl('', []),
+      'email': new FormControl('', [])
+    });
+  }
+
+
+  agregarCentroMedico() {
+    this._centroMedicoService.postCentroMedico(this.formCentroMedico.value)
+      .subscribe(res => {
+        console.log(res);
+      });
+    console.log(this.formCentroMedico.value);
+    this.isCorrect = !this.isCorrect;
+  }
+
+  agregarSuscripcion() {
+    console.log(this.formSuscripcion.value);
+    this.isCorrect = !this.isCorrect;
   }
 }
