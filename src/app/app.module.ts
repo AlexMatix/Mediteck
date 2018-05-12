@@ -6,23 +6,26 @@ import { AppComponent } from './app.component';
 import {PagesModule} from './pages/pages.module';
 import { LoginComponent } from './login/login.component';
 import {APP_ROUTING} from './app.routes';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { LeftsidebarComponent } from './shared/leftsidebar/leftsidebar.component';
-import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component';
 import {ServiceModule} from './services/service.module';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ModificarSuscripcionComponent } from './modals/modificar-suscripcion/modificar-suscripcion.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NavbarComponent} from './shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     PagesModule,
+    FormsModule,
+    ReactiveFormsModule,
     ServiceModule,
-    APP_ROUTING
+    APP_ROUTING,
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

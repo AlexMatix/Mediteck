@@ -3,6 +3,7 @@ import {SidebarService} from './shared/sidebar.service';
 import {CentroMedicoService} from './centro-medico/centro-medico.service';
 import {HttpClientModule} from '@angular/common/http';
 import {SuscripcionesService} from './suscripciones/suscripciones.service';
+import {UserService} from './user/user.service';
 
 @NgModule({
   imports: [
@@ -11,7 +12,8 @@ import {SuscripcionesService} from './suscripciones/suscripciones.service';
   providers: [
     SidebarService,
     CentroMedicoService,
-    SuscripcionesService
+    SuscripcionesService,
+    UserService
   ],
   declarations: []
 })

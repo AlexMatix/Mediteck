@@ -1,0 +1,89 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">{{mensaje}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div id="FormHospital" class="card margintopForm">
+      <form [formGroup]="formCentroMedico" (ngSubmit)="modificarCentroMedico()" *ngIf="!isCorrect">
+        <div class="form-group">
+          <label for="nombre_cm">Nombre:</label>
+          <input type="text" class="form-control" id="nombre_cm" placeholder="Ingresa tu Nombre" name="nombre"
+                 formControlName="Nombre">
+        </div>
+
+        <div class="form-group mt-3">
+          <label for="direc">Direccion:</label>
+          <input type="text" class="form-control" id="direc" placeholder="Ingresa la Direccion" name="direc"
+                 formControlName="Direccion">
+        </div>
+
+        <div class="form-group mt-3">
+          <label>Tipo de suscripcion:</label>
+          <select class="form-control show-tick"
+                  formControlName="Tipo_centro_medico">
+            <option type="number" *ngFor="let tipo of tipo_centro_medico" [value] = [(tipo.value)]>
+              {{tipo.viewValue}}
+            </option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary text-center">Guardar</button>
+        </div>
+      </form>
+
+      <!--Formulario de suscripcion -->
+
+      <form [formGroup]="formSuscripcion" *ngIf="isCorrect" (ngSubmit)="agregarSuscripcion()">
+        <div>
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu Nombre" name="nombre"
+                   formControlName="Nombre_persona">
+          </div>
+
+          <div class="form-group">
+            <label for="apellido">Apellidos:</label>
+            <input type="text" class="form-control" id="apellido" placeholder="Apellido"
+                   formControlName="Apellidos_persona">
+          </div>
+
+          <div class="form-group">
+            <label for="fecha">Fecha de Inscripción:</label>
+            <input type="date" class="form-control" id="fecha"
+                   formControlName="Fecha_inscripcion">
+          </div>
+
+          <div class="form-group">
+            <label for="cedula">Cedula Profesional:</label>
+            <input type="text" class="form-control" id="cedula" placeholder="Cedula Profesional"
+                   formControlName="Cedula">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Email" name="email"
+                   formControlName="email">
+          </div>
+
+          <div class="form-group mt-3">
+            <label>Tipo de suscripcion:</label>
+            <select class="form-control show-tick"
+                    formControlName="Tipo_suscripcion">
+              <option type="number" *ngFor="let tipo of tipo_suscripcion" [value] = [(tipo.value)]>
+                {{tipo.viewValue}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary text-center">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+<button class="btn btn-success"(click)="open(content)"><i class="fas fa-edit fa-lg"></i></button>

@@ -18,9 +18,10 @@ export class CentroMedicoService {
     return this.http.get(this.centroMedicoURL);
   }
 
-  postCentroMedico(centroMedico: FormGroup){
+  postCentroMedico(centroMedico: FormGroup) {
     const body = JSON.stringify(centroMedico);
-    return this.http.post(this.centroMedicoURL, body);
+    console.log(body);
+    return this.http.post(this.centroMedicoURL, body, {headers: {'Content-Type': 'application/json'}});
   }
 
 }

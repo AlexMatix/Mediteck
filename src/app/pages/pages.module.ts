@@ -14,6 +14,12 @@ import { CentroMedicoComponent } from './centro-medico/centro-medico.component';
 import { SuscripcionComponent } from './suscripcion/suscripcion.component';
 import {ServiceModule} from '../services/service.module';
 import { ClientesComponent } from './clientes/clientes.component';
+import { IndependienteComponent } from './clientes/independiente/independiente.component';
+import { ClinicaComponent } from './clientes/clinica/clinica.component';
+import { HospitalBasicoComponent } from './clientes/hospital-basico/hospital-basico.component';
+import { HospitalPremiumComponent } from './clientes/hospital-premium/hospital-premium.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ModificarSuscripcionComponent} from '../modals/modificar-suscripcion/modificar-suscripcion.component';
 
 
 @NgModule({
@@ -28,6 +34,11 @@ import { ClientesComponent } from './clientes/clientes.component';
     CentroMedicoComponent,
     SuscripcionComponent,
     ClientesComponent,
+    IndependienteComponent,
+    ClinicaComponent,
+    HospitalBasicoComponent,
+    HospitalPremiumComponent,
+    ModificarSuscripcionComponent
   ],
   exports: [],
   imports: [
@@ -35,6 +46,7 @@ import { ClientesComponent } from './clientes/clientes.component';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    PAGES_ROUTES
+    PAGES_ROUTES,
+    NgbModule
   ]
 }) export class PagesModule {}

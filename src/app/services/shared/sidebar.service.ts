@@ -10,19 +10,19 @@ export class SidebarService {
     },
     {
       titulo: 'Profesionista independiente',
-      url: '/centro-medico'
+      url: '/independiente'
     },
     {
       titulo: 'Clinica',
-      url: '/almacen'
+      url: '/clinica'
     },
     {
       titulo: 'Hospital basico',
-      url: '/clientes'
+      url: '/hospital-basico'
     },
     {
       titulo: 'Hospital premium',
-      url: '/configuracion'
+      url: '/hospital-premium'
     }
   ];
 

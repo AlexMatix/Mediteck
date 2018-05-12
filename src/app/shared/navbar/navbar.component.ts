@@ -1,4 +1,5 @@
 import {Component, OnInit, Renderer2} from '@angular/core';
+import {UserService} from '../../services/user/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,8 @@ import {Component, OnInit, Renderer2} from '@angular/core';
 export class NavbarComponent implements OnInit {
   isOpen = true;
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2,
+              public _userService: UserService) { }
 
   ngOnInit() {
   }

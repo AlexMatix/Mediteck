@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {CentroMedicoService} from '../../services/centro-medico/centro-medico.service';
 import {SuscripcionesService} from '../../services/suscripciones/suscripciones.service';
+import {CLINICA} from '../../config/config';
 
 @Component({
   selector: 'app-clientes',
@@ -20,7 +21,7 @@ export class ClientesComponent implements OnInit {
   }
 
   loadData() {
-    this._suscripcionesService.getAllSuscripciones()
+    this._suscripcionesService.getAllSuscripciones(CLINICA)
       .subscribe( (data: any) => {
         this.suscripciones = data.data;
         console.log(this.suscripciones);
