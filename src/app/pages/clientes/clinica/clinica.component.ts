@@ -1,42 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SuscripcionesService} from '../../../services/suscripciones/suscripciones.service';
 import {CentroMedicoService} from '../../../services/centro-medico/centro-medico.service';
-import {CLINICA} from '../../../config/config';
+import {CLINICA, HOSPITAL_BASICO} from '../../../config/config';
+import 'rxjs/add/operator/takeWhile';
+import {Observable} from 'rxjs/Observable';
+import {CentroMedico} from '../../../interfaces/centroMedico.interface';
 
 @Component({
   selector: 'app-clinica',
   templateUrl: './clinica.component.html',
   styleUrls: ['./clinica.component.css']
 })
-export class ClinicaComponent implements OnInit {
+export class ClinicaComponent implements OnInit, OnDestroy {
   suscripciones: any[] = [];
-  centrosMedicos: any[] = [];
+  centroMedico: CentroMedico;
+  isAlive = true;
 
-  constructor(private _suscripcionesService: SuscripcionesService,
-              private _centroMedicoService: CentroMedicoService) { }
+  constructor(private _suscripcionesService: SuscripcionesService) {}
 
   ngOnInit() {
     this.loadData();
   }
 
+  ngOnDestroy(): void {
+    this.isAlive = false;
+  }
+
   loadData() {
-    this._suscripcionesService.getAllSuscripciones(CLINICA)
-      .subscribe( (data: any) => {
-        this._centroMedicoService.getAll()
-          .subscribe( (res: any) => {
-            this.suscripciones = data.data;
-            this.centrosMedicos = res.data;
-            console.log(this.centrosMedicos);
-            for (let i = 0; i < data.data.length; i++) {
-              console.log(res.data[i].id)
-              for (let j = 0; j < res.data.length; j++) {
-                if (res.data[j].id === this.suscripciones[i].idCentro_medico) {
-                  this.suscripciones[i].idCentro_medico = res.data[j].Nombre;
-                  console.log('Holi que hace')
-                }
-              }
-            }
-          });
-      });
+    this._suscripcionesService.getSuscripcionesWithCentroMedico(CLINICA)
+      .takeWhile(() => this.isAlive)
+      .subscribe(
+        res => {
+          this.suscripciones = res;
+          console.log(res);
+        }
+      );
   }
 }

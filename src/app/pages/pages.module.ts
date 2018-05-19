@@ -20,6 +20,7 @@ import { HospitalBasicoComponent } from './clientes/hospital-basico/hospital-bas
 import { HospitalPremiumComponent } from './clientes/hospital-premium/hospital-premium.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ModificarSuscripcionComponent} from '../modals/modificar-suscripcion/modificar-suscripcion.component';
+import {UppercaseDirective} from '../directives/change-uppercase.directive';
 
 
 @NgModule({
@@ -38,15 +39,18 @@ import {ModificarSuscripcionComponent} from '../modals/modificar-suscripcion/mod
     ClinicaComponent,
     HospitalBasicoComponent,
     HospitalPremiumComponent,
-    ModificarSuscripcionComponent
+    ModificarSuscripcionComponent,
+    UppercaseDirective
   ],
-  exports: [],
+  exports: [
+    UppercaseDirective
+  ],
   imports: [
     BrowserModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
     PAGES_ROUTES,
-    NgbModule
+    NgbModule,
   ]
 }) export class PagesModule {}

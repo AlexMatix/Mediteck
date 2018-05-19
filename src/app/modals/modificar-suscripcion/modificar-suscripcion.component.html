@@ -11,17 +11,19 @@
         <div class="form-group">
           <label for="nombre_cm">Nombre:</label>
           <input type="text" class="form-control" id="nombre_cm" placeholder="Ingresa tu Nombre" name="nombre"
-                 formControlName="Nombre">
+                 [(ngModel)]="formCentroMedico.value.Nombre"
+                 formControlName="Nombre" uppercase>
         </div>
 
         <div class="form-group mt-3">
           <label for="direc">Direccion:</label>
           <input type="text" class="form-control" id="direc" placeholder="Ingresa la Direccion" name="direc"
-                 formControlName="Direccion">
+                 [(ngModel)]="formCentroMedico.value.Direccion"
+                 formControlName="Direccion" uppercase>
         </div>
 
         <div class="form-group mt-3">
-          <label>Tipo de suscripcion:</label>
+          <label>Tipo de centro medico:</label>
           <select class="form-control show-tick"
                   formControlName="Tipo_centro_medico">
             <option type="number" *ngFor="let tipo of tipo_centro_medico" [value] = [(tipo.value)]>
@@ -36,18 +38,20 @@
 
       <!--Formulario de suscripcion -->
 
-      <form [formGroup]="formSuscripcion" *ngIf="isCorrect" (ngSubmit)="agregarSuscripcion()">
+      <form [formGroup]="formSuscripcion" *ngIf="isCorrect" (ngSubmit)="modificarSuscripcion()">
         <div>
           <div class="form-group">
             <label for="nombre">Nombre:</label>
             <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu Nombre" name="nombre"
-                   formControlName="Nombre_persona">
+                   [(ngModel)]="formSuscripcion.value.Nombre_persona"
+                   formControlName="Nombre_persona" uppercase>
           </div>
 
           <div class="form-group">
             <label for="apellido">Apellidos:</label>
             <input type="text" class="form-control" id="apellido" placeholder="Apellido"
-                   formControlName="Apellidos_persona">
+                   [(ngModel)]="formSuscripcion.value.Apellidos_persona"
+                   formControlName="Apellidos_persona" uppercase>
           </div>
 
           <div class="form-group">
@@ -59,13 +63,8 @@
           <div class="form-group">
             <label for="cedula">Cedula Profesional:</label>
             <input type="text" class="form-control" id="cedula" placeholder="Cedula Profesional"
-                   formControlName="Cedula">
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" placeholder="Email" name="email"
-                   formControlName="email">
+                   [(ngModel)]="formSuscripcion.value.Cedula"
+                   formControlName="Cedula" uppercase>
           </div>
 
           <div class="form-group mt-3">

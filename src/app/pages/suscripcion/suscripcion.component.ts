@@ -86,8 +86,11 @@ export class SuscripcionComponent implements OnInit {
     this.suscripcion.Tipo_suscripcion = Number(this.suscripcion.Tipo_suscripcion);
     this.suscripcion.idCentro_medico = this.idCentroMedico;
     console.log(this.suscripcion);
-    this._suscripcionesService.postCentroMedico(this.suscripcion)
+    this._suscripcionesService.postSuscripcion(this.suscripcion)
       .subscribe((res: any) => {
+          console.log(res);
+          this.formCentroMedico.reset();
+          this.formSuscripcion.reset();
           swal('Suscripcion agregada', 'Suscripcion agregada con exito', 'success');
           this.isCorrect = !this.isCorrect;
       },

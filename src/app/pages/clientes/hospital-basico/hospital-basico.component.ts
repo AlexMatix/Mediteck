@@ -1,43 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import {SuscripcionesService} from '../../../services/suscripciones/suscripciones.service';
 import {CentroMedicoService} from '../../../services/centro-medico/centro-medico.service';
 import {HOSPITAL_BASICO} from '../../../config/config';
+import {CentroMedico} from '../../../interfaces/centroMedico.interface';
+import 'rxjs/add/operator/takeWhile';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-hospital-basico',
   templateUrl: './hospital-basico.component.html',
   styleUrls: ['./hospital-basico.component.css']
 })
-export class HospitalBasicoComponent implements OnInit {
-  suscripciones: any[] = [];
-  centrosMedicos: any[] = [];
+export class HospitalBasicoComponent implements OnInit, OnDestroy {
+  suscripciones = new Array();
+  isAlive = true;
 
-  constructor(private _suscripcionesService: SuscripcionesService,
-              private _centroMedicoService: CentroMedicoService) { }
+  constructor(public _suscripcionesService: SuscripcionesService) {
+  }
 
   ngOnInit() {
     this.loadData();
   }
 
+  ngOnDestroy(): void {
+    this.isAlive = false;
+  }
+
   loadData() {
-    this._suscripcionesService.getAllSuscripciones(HOSPITAL_BASICO)
-      .subscribe( (data: any) => {
-        this.suscripciones = data.data;
-        console.log(this.suscripciones);
-        this._centroMedicoService.getAll()
-          .subscribe( (res: any) => {
-            this.centrosMedicos = res.data;
-            console.log(res);
-            for (let i = 0; i < data.data.length; i++) {
-              console.log(res.data[i].id)
-              for (let j = 0; j < res.data.length; j++) {
-                if (res.data[j].id === this.suscripciones[i].idCentro_medico) {
-                  this.suscripciones[i].idCentro_medico = res.data[j].Nombre;
-                  console.log('Holi que hace')
-                }
-              }
-            }
-          });
-      });
+    this._suscripcionesService.getSuscripcionesWithCentroMedico(HOSPITAL_BASICO)
+      .takeWhile(() => this.isAlive)
+      .subscribe(
+        res => {
+          this.suscripciones = res;
+          console.log(res);
+        }
+      );
+  }
+
+  deleteSuscripcion(id: any) {
+    this._suscripcionesService.deleteSuscripcion(id);
   }
 }

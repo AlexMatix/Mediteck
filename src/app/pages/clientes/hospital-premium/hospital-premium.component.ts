@@ -1,43 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SuscripcionesService} from '../../../services/suscripciones/suscripciones.service';
-import {CentroMedicoService} from '../../../services/centro-medico/centro-medico.service';
-import {HOSPITAL_PREMIUM} from '../../../config/config';
+import {HOSPITAL_BASICO, HOSPITAL_PREMIUM} from '../../../config/config';
 
 @Component({
   selector: 'app-hospital-premium',
   templateUrl: './hospital-premium.component.html',
   styleUrls: ['./hospital-premium.component.css']
 })
-export class HospitalPremiumComponent implements OnInit {
+export class HospitalPremiumComponent implements OnInit, OnDestroy {
+  isAlive = true;
   suscripciones: any[] = [];
-  centrosMedicos: any[] = [];
 
-  constructor(private _suscripcionesService: SuscripcionesService,
-              private _centroMedicoService: CentroMedicoService) { }
+  constructor(private _suscripcionesService: SuscripcionesService) { }
 
   ngOnInit() {
     this.loadData();
   }
 
+  ngOnDestroy(): void {
+    this.isAlive = false;
+  }
+
   loadData() {
-    this._suscripcionesService.getAllSuscripciones(HOSPITAL_PREMIUM)
-      .subscribe( (data: any) => {
-        this.suscripciones = data.data;
-        console.log(this.suscripciones);
-        this._centroMedicoService.getAll()
-          .subscribe( (res: any) => {
-            this.centrosMedicos = res.data;
-            console.log(res);
-            for (let i = 0; i < data.data.length; i++) {
-              console.log(res.data[i].id)
-              for (let j = 0; j < res.data.length; j++) {
-                if (res.data[j].id === this.suscripciones[i].idCentro_medico) {
-                  this.suscripciones[i].idCentro_medico = res.data[j].Nombre;
-                  console.log('Holi que hace')
-                }
-              }
-            }
-          });
-      });
+    this._suscripcionesService.getSuscripcionesWithCentroMedico(HOSPITAL_PREMIUM)
+      .takeWhile(() => this.isAlive)
+      .subscribe(
+        res => {
+          this.suscripciones = res;
+          console.log(res);
+        }
+      );
   }
 }
