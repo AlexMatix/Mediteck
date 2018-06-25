@@ -23,10 +23,9 @@ export class IndependienteComponent implements OnInit, OnDestroy {
   }
 
   loadData() {
-    this._suscripcionesService.getSuscripcionesWithCentroMedico(CONSULTORIO)
-      .takeWhile(() => this.isAlive)
+    this._suscripcionesService.getAllSuscripciones(CONSULTORIO)
       .subscribe(
-        res => {
+        (res: any) => {
           this.suscripciones = res;
           console.log(res);
         }

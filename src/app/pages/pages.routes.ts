@@ -1,10 +1,6 @@
 import {RouterModule, Routes} from '@angular/router';
-import {PacientesComponent} from './pacientes/pacientes.component';
 import {PagesComponent} from './pages.component';
-import {DashboardComponent} from './dashboard/dashboard.component';
-import {CentroMedicoComponent} from './centro-medico/centro-medico.component';
 import {SuscripcionComponent} from './suscripcion/suscripcion.component';
-import {ClientesComponent} from './clientes/clientes.component';
 import {IndependienteComponent} from './clientes/independiente/independiente.component';
 import {ClinicaComponent} from './clientes/clinica/clinica.component';
 import {HospitalBasicoComponent} from './clientes/hospital-basico/hospital-basico.component';

@@ -10,14 +10,15 @@ import 'rxjs/add/observable/forkJoin';
 
 @Injectable()
 export class SuscripcionesService {
-  suscripcionesURL = URL_SERVICIOS + '/suscripciones';
+  newSuscripcionURL = URL_SERVICIOS + '/nueva-suscripcion';
+  suscripcionesURL = URL_SERVICIOS + '/suscripciones-centros-medicos';
 
 
   constructor(private http: HttpClient,
               private _centroMedicoService: CentroMedicoService) { }
 
   getAllSuscripciones(tipo: number) {
-    const url = `${this.suscripcionesURL}?tipo=${tipo}`;
+    const url = `${this.suscripcionesURL}/${tipo}`;
     console.log(url);
     return this.http.get(url);
   }
@@ -26,9 +27,9 @@ export class SuscripcionesService {
     return this.http.get(this.suscripcionesURL);
   }
 
-  postSuscripcion(suscripcion: Suscripcion) {
+  postSuscripcion(suscripcion: any) {
     const body = JSON.stringify(suscripcion);
-    return this.http.post(this.suscripcionesURL, body, {headers: {'Content-Type': 'application/json'}});
+    return this.http.post(this.newSuscripcionURL, body, {headers: {'Content-Type': 'application/json'}});
   }
 
   putSuscripcion(suscripcion, key) {

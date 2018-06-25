@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 import {SuscripcionesService} from '../../../services/suscripciones/suscripciones.service';
 import {CentroMedicoService} from '../../../services/centro-medico/centro-medico.service';
-import {HOSPITAL_BASICO} from '../../../config/config';
+import {CLINICA, HOSPITAL_BASICO} from '../../../config/config';
 import {CentroMedico} from '../../../interfaces/centroMedico.interface';
 import 'rxjs/add/operator/takeWhile';
 import {Observable} from 'rxjs/Observable';
@@ -31,14 +31,22 @@ export class HospitalBasicoComponent implements OnInit, OnDestroy {
   }
 
   loadData() {
-    this._suscripcionesService.getSuscripcionesWithCentroMedico(HOSPITAL_BASICO)
-      .takeWhile(() => this.isAlive)
+
+    this._suscripcionesService.getAllSuscripciones(HOSPITAL_BASICO)
       .subscribe(
-        res => {
+        (res: any) => {
           this.suscripciones = res;
           console.log(res);
         }
       );
+    // this._suscripcionesService.getSuscripcionesWithCentroMedico(HOSPITAL_BASICO)
+    //   .takeWhile(() => this.isAlive)
+    //   .subscribe(
+    //     res => {
+    //       this.suscripciones = res;
+    //       console.log(res);
+    //     }
+    //   );
   }
 
   deleteSuscripcion(id: any) {

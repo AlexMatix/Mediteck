@@ -9,7 +9,7 @@ export class SidebarService {
       url: '/suscripcion'
     },
     {
-      titulo: 'Profesionista independiente',
+      titulo: 'Consultorio',
       url: '/independiente'
     },
     {

@@ -20,7 +20,7 @@ export class SuscripcionComponent implements OnInit {
   formCentroMedico: FormGroup;
   formSuscripcion: FormGroup;
   idCentroMedico: number;
-  suscripcion: Suscripcion;
+  suscripcion: any;
   isCorrect = false;
 
   tipo_centro_medico = [
@@ -55,11 +55,15 @@ export class SuscripcionComponent implements OnInit {
 
   crearFormaSuscripcion() {
     this.formSuscripcion = new FormGroup({
+      'Nombre': new FormControl('', []),
+      'Direccion': new FormControl('', []),
+      'Tipo_centro_medico': new FormControl('', []),
       'Nombre_persona': new FormControl('', []),
       'Apellidos_persona': new FormControl('', []),
       'Fecha_inscripcion': new FormControl('', []),
       'Cedula': new FormControl('', []),
       'email': new FormControl('', []),
+      'Password': new FormControl('', []),
       'Tipo_suscripcion': new FormControl(0, [])
     });
   }
@@ -92,7 +96,7 @@ export class SuscripcionComponent implements OnInit {
           this.formCentroMedico.reset();
           this.formSuscripcion.reset();
           swal('Suscripcion agregada', 'Suscripcion agregada con exito', 'success');
-          this.isCorrect = !this.isCorrect;
+          this.formSuscripcion.reset();
       },
         (error: HttpErrorResponse) => {
           if (error.status !== 201) {

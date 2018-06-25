@@ -21,9 +21,9 @@ export class ModificarSuscripcionComponent implements OnInit {
   mensaje = 'Datos de centro medico';
 
   tipo_centro_medico = [
-    {value: 'CONSULTORIO', viewValue: 'CONSULTORIO'},
-    {value: 'CLINICA', viewValue: 'CLINICA'},
-    {value: 'HOSPITAL', viewValue: 'HOSPITAL'}
+    {value: '0', viewValue: 'CONSULTORIO'},
+    {value: '1', viewValue: 'CLINICA'},
+    {value: '2', viewValue: 'HOSPITAL'}
   ];
 
   tipo_suscripcion = [
@@ -45,7 +45,7 @@ export class ModificarSuscripcionComponent implements OnInit {
 
   crearFormaCentroMedico() {
     this.formCentroMedico = new FormGroup({
-      'Nombre': new FormControl('', []),
+      'Nombre': new FormControl(),
       'Direccion': new FormControl('', []),
       'Tipo_centro_medico': new FormControl('', [])
     });
@@ -53,6 +53,9 @@ export class ModificarSuscripcionComponent implements OnInit {
 
   crearFormaSuscripcion() {
     this.formSuscripcion = new FormGroup({
+      'Nombre': new FormControl(),
+      'Direccion': new FormControl('', []),
+      'Tipo_centro_medico': new FormControl('', []),
       'Nombre_persona': new FormControl('', []),
       'Apellidos_persona': new FormControl('', []),
       'Fecha_inscripcion': new FormControl('', []),
@@ -65,7 +68,7 @@ export class ModificarSuscripcionComponent implements OnInit {
     this.isCorrect = false;
     // console.log(this.centroMedico);
     console.log(this.suscripcion);
-    this.loadData2FormCentroMedico(this.suscripcion.centroMedico);
+    this.loadData2FormSuscripcion(this.suscripcion);
     this.modalRef = this.modalService.open(content);
     this.modalRef.result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -93,6 +96,9 @@ export class ModificarSuscripcionComponent implements OnInit {
 
   loadData2FormSuscripcion(suscripcion: any) {
     console.log(suscripcion);
+    this.formSuscripcion.controls['Nombre'].setValue(suscripcion.Nombre);
+    this.formSuscripcion.controls['Direccion'].setValue(suscripcion.Direccion);
+    this.formSuscripcion.controls['Tipo_centro_medico'].setValue(suscripcion.Tipo_centro_medico);
     this.formSuscripcion.controls['Nombre_persona'].setValue(suscripcion.Nombre_persona);
     this.formSuscripcion.controls['Apellidos_persona'].setValue(suscripcion.Apellidos_persona);
     this.formSuscripcion.controls['Fecha_inscripcion'].setValue(suscripcion.Fecha_inscripcion);
@@ -120,7 +126,7 @@ export class ModificarSuscripcionComponent implements OnInit {
     // this.suscripcion.Tipo_suscripcion = Number(this.suscripcion.Tipo_suscripcion);
     // this.suscripcion.idCentro_medico = this.idCentroMedico;
     console.log(this.suscripcion);
-    this._suscripcionesService.putSuscripcion(this.formSuscripcion.value, this.suscripcion.id)
+    this._suscripcionesService.putSuscripcion(this.formSuscripcion.value, this.suscripcion.suscripcion.id)
       .subscribe((res: any) => {
           this.modalRef.close();
           swal('Suscripcion modificada', 'Suscripcion agregada con exito', 'success');

@@ -15,12 +15,12 @@
         </thead>
         <tbody>
         <tr *ngFor="let k of suscripciones; let i = index"
-            [ngClass]="{ 'table-danger': k.suscripcion.Estado === 2, 'table-success': k.suscripcion.Estado !== 2 }">
+            [ngClass]="{ 'table-danger': k.Estado === 2, 'table-success': k.Estado !== 2 }">
           <td><span class="list-name"> {{i+1}} </span></td>
-          <td>{{k.suscripcion.Nombre_persona + " " + k.suscripcion.Apellidos_persona}}</td>
-          <td>{{k.suscripcion.Cedula}}</td>
-          <td>{{k.suscripcion.Fecha_inscripcion}}</td>
-          <td>{{k.centroMedico.Nombre}}</td>
+          <td>{{k.Nombre_persona + " " + k.Apellidos_persona}}</td>
+          <td>{{k.Cedula}}</td>
+          <td>{{k.Fecha_inscripcion}}</td>
+          <td>{{k.Nombre}}</td>
           <app-modificar-suscripcion [suscripcion]="suscripciones[i]"></app-modificar-suscripcion>
           <button class="btn btn-danger" type="button"> <i class="fas fa-trash fa-lg"></i></button>
           <!--<td>{{k.Estado}}</td>-->

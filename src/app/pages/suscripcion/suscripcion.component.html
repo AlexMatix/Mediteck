@@ -1,17 +1,17 @@
 <div id="FormHospital" class="card margintopForm">
-  <form [formGroup]="formCentroMedico" (ngSubmit)="agregarCentroMedico()" *ngIf="!isCorrect">
+  <form [formGroup]="formSuscripcion" (ngSubmit)="agregarSuscripcion()" *ngIf="!isCorrect">
     <h3>Datos del Centro Médico</h3>
     <div class="form-group">
       <label for="nombre_cm">Nombre:</label>
       <input type="text" class="form-control" id="nombre_cm" placeholder="Ingresa tu Nombre" name="nombre"
-             [(ngModel)]="formCentroMedico.value.Nombre"
+             [(ngModel)]="formSuscripcion.value.Nombre"
              formControlName="Nombre" uppercase>
     </div>
 
     <div class="form-group mt-3">
       <label for="direc">Direccion:</label>
       <input type="text" class="form-control" id="direc" placeholder="Ingresa la Direccion" name="direc"
-             [(ngModel)]="formCentroMedico.value.Direccion"
+             [(ngModel)]="formSuscripcion.value.Direccion"
              formControlName="Direccion" uppercase>
     </div>
 
@@ -25,25 +25,35 @@
       </select>
     </div>
 
-    <button type="submit" class="btn btn-primary text-center">Suscribir</button>
-  </form>
+    <!--<button type="submit" class="btn btn-primary text-center">Suscribir</button>-->
+  <!--</form>-->
 
   <!--Formulario de suscripcion -->
 
-  <form [formGroup]="formSuscripcion" *ngIf="isCorrect" (ngSubmit)="agregarSuscripcion()">
+  <!--<form [formGroup]="formSuscripcion" *ngIf="isCorrect" (ngSubmit)="agregarSuscripcion()">-->
     <h3>Datos de suscripción</h3>
     <div>
+      <div class="form-group mt-3">
+        <label>Tipo de suscripcion:</label>
+        <select class="form-control show-tick"
+                formControlName="Tipo_suscripcion">
+          <option type="number" *ngFor="let tipo of tipo_suscripcion" [value] = [(tipo.value)]>
+            {{tipo.viewValue}}
+          </option>
+        </select>
+      </div>
+
       <div class="form-group">
         <label for="nombre">Nombre:</label>
         <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu Nombre" name="nombre"
-               [(ngModel)]="formCentroMedico.value.Nombre_persona"
+               [(ngModel)]="formSuscripcion.value.Nombre_persona"
                formControlName="Nombre_persona" uppercase>
       </div>
 
       <div class="form-group">
         <label for="apellido">Apellidos:</label>
         <input type="text" class="form-control" id="apellido" placeholder="Apellido"
-               [(ngModel)]="formCentroMedico.value.Apellidos_persona"
+               [(ngModel)]="formSuscripcion.value.Apellidos_persona"
                formControlName="Apellidos_persona" uppercase>
       </div>
 
@@ -56,7 +66,7 @@
       <div class="form-group">
         <label for="cedula">Cedula Profesional:</label>
         <input type="text" class="form-control" id="cedula" placeholder="Cedula Profesional"
-               [(ngModel)]="formCentroMedico.value.Cedula"
+               [(ngModel)]="formSuscripcion.value.Cedula"
                formControlName="Cedula" uppercase>
       </div>
 
@@ -66,15 +76,12 @@
                formControlName="email">
       </div>
 
-      <div class="form-group mt-3">
-        <label>Tipo de suscripcion:</label>
-        <select class="form-control show-tick"
-                formControlName="Tipo_suscripcion">
-          <option type="number" *ngFor="let tipo of tipo_suscripcion" [value] = [(tipo.value)]>
-            {{tipo.viewValue}}
-          </option>
-        </select>
+      <div class="form-group">
+        <label>Contraseña:</label>
+        <input type="password" class="form-control" placeholder="Contraseña"
+               formControlName="Password">
       </div>
+
     </div>
 
     <button type="submit" class="btn btn-primary text-center">Suscribir</button>

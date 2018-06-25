@@ -22,10 +22,9 @@ export class HospitalPremiumComponent implements OnInit, OnDestroy {
   }
 
   loadData() {
-    this._suscripcionesService.getSuscripcionesWithCentroMedico(HOSPITAL_PREMIUM)
-      .takeWhile(() => this.isAlive)
+    this._suscripcionesService.getAllSuscripciones(HOSPITAL_PREMIUM)
       .subscribe(
-        res => {
+        (res: any) => {
           this.suscripciones = res;
           console.log(res);
         }

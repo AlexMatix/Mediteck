@@ -27,13 +27,19 @@ export class ClinicaComponent implements OnInit, OnDestroy {
   }
 
   loadData() {
-    this._suscripcionesService.getSuscripcionesWithCentroMedico(CLINICA)
-      .takeWhile(() => this.isAlive)
+    this._suscripcionesService.getAllSuscripciones(CLINICA)
       .subscribe(
-        res => {
+        (res: any) => {
           this.suscripciones = res;
           console.log(res);
         }
       );
+    // this._suscripcionesService.getSuscripcionesWithCentroMedico(CLINICA)
+    //   .subscribe(
+    //     res => {
+    //       this.suscripciones = res;
+    //       console.log(res);
+    //     }
+    //   );
   }
 }
