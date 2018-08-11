@@ -16,7 +16,7 @@ export class ClinicaComponent implements OnInit, OnDestroy {
   centroMedico: CentroMedico;
   isAlive = true;
 
-  constructor(private _suscripcionesService: SuscripcionesService) {}
+  constructor(public _suscripcionesService: SuscripcionesService) {}
 
   ngOnInit() {
     this.loadData();
@@ -34,12 +34,11 @@ export class ClinicaComponent implements OnInit, OnDestroy {
           console.log(res);
         }
       );
-    // this._suscripcionesService.getSuscripcionesWithCentroMedico(CLINICA)
-    //   .subscribe(
-    //     res => {
-    //       this.suscripciones = res;
-    //       console.log(res);
-    //     }
-    //   );
+  }
+
+  reload(cerrado) {
+    if (cerrado) {
+      this.loadData();
+    }
   }
 }

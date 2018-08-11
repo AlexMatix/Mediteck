@@ -7,6 +7,7 @@ import {APP_ROUTING} from './app.routes';
 import {ServiceModule} from './services/service.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ModalsModule} from './modals/modals.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     ServiceModule,
+    ModalsModule,
     APP_ROUTING,
     NgbModule.forRoot()
   ],

@@ -19,6 +19,8 @@ import { HospitalPremiumComponent } from './clientes/hospital-premium/hospital-p
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ModificarSuscripcionComponent} from '../modals/modificar-suscripcion/modificar-suscripcion.component';
 import {UppercaseDirective} from '../directives/change-uppercase.directive';
+import {AdminPlansComponent} from './admin-plans/admin-plans.component';
+import {ModalsModule} from '../modals/modals.module';
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import {UppercaseDirective} from '../directives/change-uppercase.directive';
     FormsModule,
     ReactiveFormsModule,
     PAGES_ROUTES,
-    NgbModule
+    NgbModule,
+    ModalsModule
   ],
   declarations: [
     PagesComponent,
@@ -44,6 +47,7 @@ import {UppercaseDirective} from '../directives/change-uppercase.directive';
     HospitalBasicoComponent,
     HospitalPremiumComponent,
     ModificarSuscripcionComponent,
+    AdminPlansComponent,
     UppercaseDirective
   ],
   exports: [

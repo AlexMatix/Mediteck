@@ -5,6 +5,7 @@ import {IndependienteComponent} from './clientes/independiente/independiente.com
 import {ClinicaComponent} from './clientes/clinica/clinica.component';
 import {HospitalBasicoComponent} from './clientes/hospital-basico/hospital-basico.component';
 import {HospitalPremiumComponent} from './clientes/hospital-premium/hospital-premium.component';
+import {AdminPlansComponent} from './admin-plans/admin-plans.component';
 
 const pagesRoutes: Routes = [
   {
@@ -17,6 +18,7 @@ const pagesRoutes: Routes = [
       {path: 'clinica', component: ClinicaComponent, data: {titulo: 'Clientes', subtitle: 'Clinica'}},
       {path: 'hospital-basico', component: HospitalBasicoComponent, data: {titulo: 'Clientes', subtitle: 'Hospital basico'}},
       {path: 'hospital-premium', component: HospitalPremiumComponent, data: {titulo: 'Clientes', subtitle: 'Hospital premium'}},
+      {path: 'configura-planes', component: AdminPlansComponent, data: {titulo: 'Configura tus planes', subtitle: 'Planes'}},
       {path: '', redirectTo: '/suscripcion', pathMatch: 'full'}
     ]
   }

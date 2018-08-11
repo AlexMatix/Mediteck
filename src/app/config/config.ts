@@ -3,19 +3,12 @@ export const CLINICA = 1;
 export const HOSPITAL_BASICO = 2;
 export const HOSPITAL_PREMIUM = 3;
 
-
-/*
-
-Datos de login server chido
-Usuario: pagac.pedro@example.com
-Password: secret
-
-*/
-
-export const URL_SERVICIOS = 'http://167.99.224.27:81';
-export const GRANT_TYPE = 'client_credentials';
+export const URL_SERVICIOS = 'http://167.99.224.27';
+export const GRANT_TYPE = 'password';
 export const CLIENT_ID = '1';
+export const DESTINO = 'Admin';
+export const CONEKTA_PUBLIC_KEY = 'key_BahEESZgjd9cUKGmqiL5PcQ';
 
 // TOKEN DEL SERVER NUEVO
-export const CLIENT_SECRET = 'krkWABgcAGU0hhvOvqn9hRXDNB2XZQEFmSDjpao1';
+export const CLIENT_SECRET = '5prs81bNv9aEugCEJ8SdbQIjKbg2geRBP3Dd4dHQ';
 

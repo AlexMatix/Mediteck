@@ -11,7 +11,7 @@ export class HospitalPremiumComponent implements OnInit, OnDestroy {
   isAlive = true;
   suscripciones: any[] = [];
 
-  constructor(private _suscripcionesService: SuscripcionesService) { }
+  constructor(public _suscripcionesService: SuscripcionesService) { }
 
   ngOnInit() {
     this.loadData();
@@ -29,5 +29,11 @@ export class HospitalPremiumComponent implements OnInit, OnDestroy {
           console.log(res);
         }
       );
+  }
+
+  reload(cerrado) {
+    if (cerrado) {
+      this.loadData();
+    }
   }
 }

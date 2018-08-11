@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ModalDismissReasons, NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {FormControl, FormGroup} from '@angular/forms';
 import {SuscripcionesService} from '../../services/suscripciones/suscripciones.service';
@@ -13,6 +13,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 export class ModificarSuscripcionComponent implements OnInit {
 
   @Input() suscripcion: any;
+  @Output() cerrado = new EventEmitter();
   private modalRef: NgbModalRef;
   closeResult: string;
   formCentroMedico: FormGroup;
@@ -39,16 +40,7 @@ export class ModificarSuscripcionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.crearFormaCentroMedico();
     this.crearFormaSuscripcion();
-  }
-
-  crearFormaCentroMedico() {
-    this.formCentroMedico = new FormGroup({
-      'Nombre': new FormControl(),
-      'Direccion': new FormControl('', []),
-      'Tipo_centro_medico': new FormControl('', [])
-    });
   }
 
   crearFormaSuscripcion() {
@@ -71,6 +63,13 @@ export class ModificarSuscripcionComponent implements OnInit {
     this.loadData2FormSuscripcion(this.suscripcion);
     this.modalRef = this.modalService.open(content);
     this.modalRef.result.then((result) => {
+      if ( result === 1 ) {
+        swal('Paciente actualizado', 'Paciente actualizado con exito', 'success');
+        this.cerrado.emit(true);
+      } else if (result === 2) {
+        swal('Algo malo ha ocurrido', 'Error al actualizar paciente', 'error');
+      }
+      console.log(result);
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -107,7 +106,7 @@ export class ModificarSuscripcionComponent implements OnInit {
   }
 
   modificarCentroMedico() {
-    this._centroMedicoService.putCentroMedico(this.formCentroMedico.value, this.suscripcion.centroMedico.id)
+    this._centroMedicoService.putCentroMedico(this.formCentroMedico.value, this.suscripcion.idCentro_medico)
       .subscribe((res: any) => {
           console.log(res);
           this.isCorrect = !this.isCorrect;
@@ -126,10 +125,10 @@ export class ModificarSuscripcionComponent implements OnInit {
     // this.suscripcion.Tipo_suscripcion = Number(this.suscripcion.Tipo_suscripcion);
     // this.suscripcion.idCentro_medico = this.idCentroMedico;
     console.log(this.suscripcion);
-    this._suscripcionesService.putSuscripcion(this.formSuscripcion.value, this.suscripcion.suscripcion.id)
+    this._suscripcionesService.putSuscripcion(this.formSuscripcion.value, this.suscripcion.idSuscripcion)
       .subscribe((res: any) => {
-          this.modalRef.close();
-          swal('Suscripcion modificada', 'Suscripcion agregada con exito', 'success');
+          this.modalRef.close(1);
+          swal('Suscripcion modificada', 'Suscripcion modificada con exito', 'success');
         },
         (error: HttpErrorResponse) => {
           if (error.status !== 201) {
@@ -138,6 +137,7 @@ export class ModificarSuscripcionComponent implements OnInit {
           }
         });
   }
+
 
 
 }

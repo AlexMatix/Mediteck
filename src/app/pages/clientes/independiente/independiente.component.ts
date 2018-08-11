@@ -31,4 +31,10 @@ export class IndependienteComponent implements OnInit, OnDestroy {
         }
       );
   }
+
+  reload(cerrado) {
+    if (cerrado) {
+      this.loadData();
+    }
+  }
 }

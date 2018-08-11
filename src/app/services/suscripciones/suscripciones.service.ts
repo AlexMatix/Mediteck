@@ -33,7 +33,7 @@ export class SuscripcionesService {
   }
 
   putSuscripcion(suscripcion, key) {
-    const url = `${this.suscripcionesURL}/${key}`
+    const url = `${URL_SERVICIOS}/suscripciones/${key}`
     const body = JSON.stringify(suscripcion);
     console.log(body);
     return this.http.put(url, body, {headers: {'Content-Type': 'application/json'}});

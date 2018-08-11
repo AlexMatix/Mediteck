@@ -7,7 +7,7 @@
   </div>
   <div class="modal-body">
     <div id="FormHospital" class="card margintopForm">
-      <form [formGroup]="formSuscripcion" (ngSubmit)="modificarCentroMedico()" *ngIf="!isCorrect">
+      <form [formGroup]="formSuscripcion" (ngSubmit)="modificarSuscripcion()" *ngIf="!isCorrect">
         <div class="form-group">
           <label for="nombre_cm">Nombre:</label>
           <input type="text" class="form-control" id="nombre_cm" placeholder="Ingresa tu Nombre" name="nombre"

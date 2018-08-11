@@ -35,15 +35,6 @@ export class LoginComponent implements OnInit {
           console.log('Este es el token', resp);
           this._userService.setTokenInStorage(resp);
           this.router.navigate(['/suscripcion']);
-          // this._userService.getDataUser(username)
-          //   .subscribe(
-          //     (res: any) => {
-          //       const usuario = res.Usuario;
-          //       this._userService.setInStorage(usuario);
-          //       this.router.navigate(['/suscripcion']);
-          //       console.log(res);
-          //     }
-          //   );
         },
         error1 => {
           console.log(error1);

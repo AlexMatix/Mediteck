@@ -52,4 +52,10 @@ export class HospitalBasicoComponent implements OnInit, OnDestroy {
   deleteSuscripcion(id: any) {
     this._suscripcionesService.deleteSuscripcion(id);
   }
+
+  reload(cerrado) {
+    if (cerrado) {
+      this.loadData();
+    }
+  }
 }

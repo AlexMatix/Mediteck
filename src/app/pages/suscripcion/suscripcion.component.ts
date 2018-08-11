@@ -30,10 +30,10 @@ export class SuscripcionComponent implements OnInit {
   ]
 
   tipo_suscripcion = [
-    {value: 0, viewValue: 'CONSULTORIO'},
-    {value: 1, viewValue: 'CLINICA'},
-    {value: 2, viewValue: 'HOSPITAL BASICO'},
-    {value: 3, viewValue: 'HOSPITAL PREMIUM'}
+    {value: 19, viewValue: 'CONSULTORIO'},
+    {value: 20, viewValue: 'CLINICA'},
+    {value: 21, viewValue: 'HOSPITAL BASICO'},
+    {value: 21, viewValue: 'HOSPITAL PREMIUM'}
   ]
 
   constructor(private _centroMedicoService: CentroMedicoService,

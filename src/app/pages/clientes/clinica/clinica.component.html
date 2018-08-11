@@ -21,8 +21,8 @@
           <td>{{k.Cedula}}</td>
           <td>{{k.Fecha_inscripcion}}</td>
           <td>{{k.Nombre}}</td>
-          <app-modificar-suscripcion [suscripcion]="suscripciones[i]"></app-modificar-suscripcion>
-          <button class="btn btn-danger" type="button"> <i class="fas fa-trash fa-lg"></i></button>
+          <app-modificar-suscripcion (cerrado)="reload($event)" [suscripcion]="suscripciones[i]"></app-modificar-suscripcion>
+          <button class="btn btn-danger" type="button" (click)="_suscripcionesService.deleteSuscripcion(k.idSuscripcion)"> <i class="fas fa-trash fa-lg"></i></button>
 
           <!--<td>{{k.Estado}}</td>-->
           <!--<td><span class="badge badge-success">Approved</span></td>-->
