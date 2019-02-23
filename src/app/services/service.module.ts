@@ -7,6 +7,7 @@ import {UserService} from './user/user.service';
 import {AuthService} from './auth/auth.service';
 import {TokenInterceptorService} from './auth/token-interceptor.service';
 import {JwtInterceptorService} from './auth/jwt-interceptor.service';
+import {LoginGuardGuard} from './guards/login-guard.guard';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import {JwtInterceptorService} from './auth/jwt-interceptor.service';
     SidebarService,
     CentroMedicoService,
     SuscripcionesService,
+    LoginGuardGuard,
     UserService,
     AuthService,
     {

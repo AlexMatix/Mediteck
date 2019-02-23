@@ -6,11 +6,13 @@ import {ClinicaComponent} from './clientes/clinica/clinica.component';
 import {HospitalBasicoComponent} from './clientes/hospital-basico/hospital-basico.component';
 import {HospitalPremiumComponent} from './clientes/hospital-premium/hospital-premium.component';
 import {AdminPlansComponent} from './admin-plans/admin-plans.component';
+import {LoginGuardGuard} from '../services/guards/login-guard.guard';
 
 const pagesRoutes: Routes = [
   {
     path: '',
     component: PagesComponent,
+    canActivate: [LoginGuardGuard],
     children: [
       // {path: 'dashboard', component: DashboardComponent},
       {path: 'suscripcion', component: SuscripcionComponent, data: {titulo: 'Suscripción', subtitle: 'Nueva suscripcion'}},

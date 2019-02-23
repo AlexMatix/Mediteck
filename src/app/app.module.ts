@@ -8,6 +8,7 @@ import {ServiceModule} from './services/service.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ModalsModule} from './modals/modals.module';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import {ModalsModule} from './modals/modals.module';
     APP_ROUTING,
     NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
