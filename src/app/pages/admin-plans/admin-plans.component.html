@@ -1,0 +1,52 @@
+<div class="card">
+    <div class="body">
+        <div class="row">
+          <div class="col-sm-8 text-center">
+            <h3 class="section-heading text-uppercase mt-3">Planes</h3>
+          </div>
+          <div class="col-sm-4 text-center">
+              <app-add-plan></app-add-plan>
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="tab-content m-t-10">
+                    <div class="tab-pane table-responsive active" id="All">
+                        <table class="table m-b-0 table-hover">
+                            <thead>
+                                <tr>                                       
+                                  <th>ID</th>
+                                  <th>Nombre</th>
+                                  <th>Costo</th>
+                                  <th>Tipo</th>
+                                  <th>Frecuencia</th>
+                                  <th>
+
+                                  </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let plan of allPlans">
+                                  <td>{{plan.id}}</td>
+                                  <td>{{plan.Nombre}}</td>
+                                  <td>{{plan.Precio}}</td>
+                                  <td>{{plan.Tipo}}</td>
+                                  <td>{{plan.Frecuencia}}</td>
+                                  <td>
+                                      <app-edit-plan [name]="plan.Nombre" [price]="plan.Precio"></app-edit-plan>
+                                      <button class="btn btn-danger btn-round" (click)="delete(plan.id)">
+                                        Eliminar
+                                      </button>
+                                  </td>
+                                </tr>
+                            </tbody>
+                        </table>                            
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+  </div>
+  

@@ -1,0 +1,33 @@
+<div class="body">
+  <!-- Tab panes -->
+  <div class="tab-content m-t-10">
+    <div class="tab-pane table-responsive active" id="All">
+      <table class="table m-b-0 table-hover">
+        <thead>
+        <tr>
+          <th>Cliente ID</th>
+          <th>Nombre</th>
+          <th>Cedula</th>
+          <th>Fecha de inscripción</th>
+          <th>Centro medico</th>
+          <th>Opciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let k of suscripciones;  let i = index;"
+            [ngClass]="{ 'table-danger': k.Estado === 2, 'table-success': k.Estado !== 2 }">
+          <td><span class="list-name"> {{i+1}} </span></td>
+          <td>{{k.Nombre_persona + " " + k.Apellidos_persona}}</td>
+          <td>{{k.Cedula}}</td>
+          <td>{{k.Fecha_inscripcion}}</td>
+          <td>{{k.Nombre}}</td>
+          <app-modificar-suscripcion (cerrado)="reload($event)" [suscripcion]="suscripciones[i]"></app-modificar-suscripcion>
+          <button class="btn btn-danger" type="button" (click)="_suscripcionesService.deleteSuscripcion(k.idSuscripcion)"> <i class="fas fa-trash fa-lg"></i></button>
+          <!--<td>{{k.Estado}}</td>-->
+          <!--<td><span class="badge badge-success">Approved</span></td>-->
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

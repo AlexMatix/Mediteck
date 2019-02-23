@@ -1,0 +1,35 @@
+<div class="body">
+  <!-- Nav tabs -->
+  <!--<ul class="nav nav-tabs padding-0">-->
+    <!--<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#All">All</a></li>-->
+  <!--</ul>-->
+
+  <!-- Tab panes -->
+  <div class="tab-content m-t-10">
+    <div class="tab-pane table-responsive active" id="All">
+      <table class="table m-b-0 table-hover">
+        <thead>
+        <tr>
+          <th>Cliente ID</th>
+          <th>Nombre</th>
+          <th>Cedula</th>
+          <th>Fecha de inscripción</th>
+          <th>Centro medico</th>
+          <!--<th>Estado de la suscripción</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let k of suscripciones; let i = index">
+          <td><span class="list-name"> {{i+1}} </span></td>
+          <td>{{k.Nombre_persona + " " + k.Apellidos_persona}}</td>
+          <td>{{k.Cedula}}</td>
+          <td>{{k.Fecha_inscripcion}}</td>
+          <td>{{k.idCentro_medico}}</td>
+          <!--<td>{{k.Estado}}</td>-->
+          <!--<td><span class="badge badge-success">Approved</span></td>-->
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
